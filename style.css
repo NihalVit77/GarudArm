@@ -4,104 +4,170 @@ body {
   color: #E6EEF8;
   user-select: none;
   font-family: "Poppins", sans-serif;
+  overflow: hidden;
+}
+
+.topbar .logo {
+  font-size: 3vh;
+  font-family: "Zen Dots", sans-serif;
+  margin-top: 1vh;
+  margin-left: 1vh;
+}
+
+.overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.85);
+  z-index: 9999;
+}
+.overlay.hidden { display: none; }
+.overlay-card {
+  padding: 20px;
+  border-radius: 12px;
+  background: #07243a;
+  text-align: center;
+  color: #fff;
+}
+
+#app {
   height: 100vh;
-  width: 100vw;
-  overflow: hidden; /* force no scroll */
   display: flex;
   flex-direction: column;
 }
 
-/* Top bar */
 .topbar {
-  height: 10vh;
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  padding: 0 2vw;
+  padding: 0 1vh;
+  font-weight: bold;
+  height: 8vh;
 }
-.topbar .logo {
-  font-size: 3vh;
-  font-family: "Zen Dots", sans-serif;
-}
+
 .indicators {
   display: flex;
-  gap: 1vw;
+  align-items: center;
+  gap: 1vh;
+  margin-right: 1vh;
+  margin-top: 1vh;
 }
+
 .indicator {
-  font-size: 1.5vh;
   text-align: center;
+  font-size: 1.5vh;
+  font-weight: 500;
 }
+
 .indicator .light {
-  width: 1.5vh;
-  height: 1.5vh;
+  display: block;
+  width: 2vh;
+  height: 2vh;
   border-radius: 50%;
   background: red;
-  margin: 0 auto 2px;
+  margin: 0 auto 0.5vh;
 }
 
-/* Controls split in 2 panels */
+.btn {
+  background: #E6EEF8;
+  border: 2px solid #000;
+  border-radius: 1vh;
+  padding: 0.8vh 1.6vh;
+  font-weight: 800;
+  font-size: 1.8vh;
+}
+
 .controls {
   flex: 1;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1vw;
+  display: flex;
+  gap: 1vh;
   padding: 1vh;
   height: 80vh;
-  box-sizing: border-box;
 }
 
-/* Panels */
 .panel {
+  flex: 1;
   background: #0F2A44;
   border-radius: 2vh;
   padding: 1vh;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
   align-items: center;
+  justify-content: center;
 }
 
-/* Movement buttons */
+/* Movement grid */
 .movement-grid {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 1vh;
 }
+
 .mid-row {
   display: flex;
   gap: 1vh;
 }
+
 .big-btn {
-  width: 10vh;
-  height: 10vh;
+  width: 8vh;
+  height: 8vh;
   border-radius: 50%;
   background: #fff;
   border: 2px solid #333;
-  font-size: 3vh;
+  font-size: 2vh;
   font-weight: bold;
 }
+
 #btn-power {
-  padding: 1vh 2vh;
-  font-size: 2vh;
+  font-size: 1.8vh;
   border-radius: 2vh;
 }
-#btn-power:active { background: greenyellow; }
 
-/* Arm dial + controls */
+#btn-power:active {
+  background: greenyellow;
+}
+
+/* Arm buttons inside movement */
+.movement-arm-buttons {
+  margin-top: 2vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1vh;
+  width: 90%;
+}
+.movement-arm-buttons .medium-btn {
+  padding: 1vh;
+  border-radius: 2vh;
+  font-size: 1.6vh;
+  font-weight: bold;
+  background: #E6EEF8;
+  color: #0D1B2A;
+  border: 2px solid #000;
+}
+
+/* Joystick / Dial */
+.joystick-card {
+  text-align: center;
+  margin-bottom: 1vh;
+}
 .joystick-label {
   font-size: 2vh;
+  font-weight: 600;
+  margin-bottom: 0.5vh;
 }
 .dial {
-  width: 15vh;
-  height: 15vh;
+  width: 12vh;
+  height: 12vh;
   border-radius: 50%;
   background: #07243a;
+  margin: 0 auto;
   position: relative;
 }
 .dial-knob {
-  width: 3vh;
-  height: 3vh;
+  width: 2.5vh;
+  height: 2.5vh;
   border-radius: 50%;
   background: #E6EEF8;
   position: absolute;
@@ -109,50 +175,47 @@ body {
   transform: translate(-50%, -50%);
 }
 .dial-value {
+  margin-top: 0.5vh;
   font-size: 1.5vh;
   color: #9FB3C8;
-  margin-top: 0.5vh;
 }
 
 /* Sliders */
 .sliders {
-  width: 90%;
+  margin-top: 1vh;
   display: flex;
   flex-direction: column;
   gap: 1vh;
+  width: 90%;
 }
-.slider-label { font-size: 1.5vh; }
-.slider-control input[type=range] { width: 100%; }
-.slider-value { font-size: 1.2vh; color: #9FB3C8; }
-
-/* Arm buttons */
-.arm-buttons {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1vh;
+.slider-control {
+  text-align: center;
+}
+.slider-label {
+  font-size: 1.8vh;
+  margin-bottom: 0.5vh;
+}
+.slider-control input[type=range] {
   width: 100%;
+  accent-color: #E6EEF8;
 }
-.medium-btn {
-  padding: 1vh;
-  border-radius: 2vh;
+.slider-value {
   font-size: 1.5vh;
-  font-weight: bold;
-  background: #E6EEF8;
-  color: #0D1B2A;
-  border: 2px solid #000;
+  color: #9FB3C8;
 }
 
-/* Status bar */
 .status-bar {
-  height: 10vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.5vh;
+  padding: 0.8vh;
   border-top: 1px solid #222;
+  font-size: 1.5vh;
+  text-align: center;
 }
 
-/* Portrait lock */
+button:active {
+  transform: scale(0.97);
+}
+
+/* Landscape only */
 @media (orientation: portrait) {
   #app { display: none; }
   .overlay { display: flex; }
