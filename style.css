@@ -4,13 +4,15 @@ body {
   color: #E6EEF8;
   user-select: none;
   font-family: "Poppins", sans-serif;
-
+  height: 100vh;        /* Force full screen height */
+  overflow: hidden;     /* Prevent scrolling */
 }
-.topbar .logo{
-    font-size: 35px;
-    font-family: "Zen Dots", sans-serif;
-    margin-top: 10px;
-    margin-left: 15px;
+
+.topbar .logo {
+  font-size: clamp(20px, 3vw, 35px);  /* responsive */
+  font-family: "Zen Dots", sans-serif;
+  margin-top: 5px;
+  margin-left: 10px;
 }
 
 .overlay {
@@ -36,31 +38,33 @@ body {
   display: flex;
   flex-direction: column;
 }
+
 .topbar {
   display: flex;
   justify-content: space-between;
   padding: 8px 12px;
   font-weight: bold;
-  height: 50px;
+  height: 12vh;    /* scale with screen */
+  align-items: center;
 }
+
 .indicators {
   display: flex;
   align-items: center;
   gap: 10px;
   margin-right: 15px;
-  margin-top: 15px;
 }
+
 .indicator {
   text-align: center;
-  font-size: 0.9 rem;
+  font-size: clamp(10px, 2vw, 14px);
   font-weight: 500;
-  margin-right: 15px;
 }
 
 .indicator .light {
   display: block;
-  width: 18px;
-  height: 18px;
+  width: clamp(12px, 2vw, 18px);
+  height: clamp(12px, 2vw, 18px);
   border-radius: 50%;
   background: red;
   margin: 0 auto 4px;
@@ -70,50 +74,55 @@ body {
   background: #E6EEF8;
   border: 2px solid #000;
   border-radius: 12px;
-  padding: 10px 18px;
+  padding: clamp(6px, 1vh, 10px) clamp(10px, 2vw, 18px);
   font-weight: 800;
-  font-size: 16px;
+  font-size: clamp(12px, 2vw, 16px);
 }
 
 .controls {
   flex: 1;
   display: flex;
   gap: 10px;
-  padding: 12px;
+  padding: 1vh 1vw;
+  overflow: hidden;  /* prevent scroll */
 }
+
 .panel {
   flex: 1;
   background: #0F2A44;
-  border-radius: 50px;
-  padding: 12px;
+  border-radius: 20px;
+  padding: 8px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-evenly;  /* evenly distribute */
+  align-items: center;
 }
 
 .movement-grid {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
 }
+
 .mid-row {
   display: flex;
-  gap: 8px;
+  gap: 6px;
 }
+
 .big-btn {
-  width: 80px;
-  height: 80px;
-  border-radius: 50px;
+  width: clamp(50px, 10vh, 80px);
+  height: clamp(50px, 10vh, 80px);
+  border-radius: 50%;
   background: #fff;
   border: 2px solid #333;
-  font-size: 1.5rem;
+  font-size: clamp(16px, 3vh, 22px);
   font-weight: bold;
 }
 
-#btn-power{
-  font-size: 20px;
-  border-radius: 30px;
+#btn-power {
+  font-size: clamp(14px, 2vh, 20px);
+  border-radius: 20px;
 }
 
 #btn-power:active {
@@ -122,65 +131,99 @@ body {
 
 .joystick-card {
   text-align: center;
-  margin-bottom: 12px;
+  margin-bottom: 8px;
   font-family: "Poppins", sans-serif;
 }
 
-.joystick-label{
-    font-size: 25px;
-    font-weight: 500;
+.joystick-label {
+  font-size: clamp(14px, 2vh, 20px);
+  font-weight: 600;
+  margin-bottom: 5px;
 }
 
 .dial {
-  width: 150px;
-  height: 150px;
+  width: clamp(100px, 20vh, 150px);
+  height: clamp(100px, 20vh, 150px);
   border-radius: 50%;
   background: #07243a;
   margin: 0 auto;
   position: relative;
 }
+
 .dial-knob {
-  width: 30px;
-  height: 30px;
+  width: clamp(20px, 4vh, 30px);
+  height: clamp(20px, 4vh, 30px);
   border-radius: 50%;
   background: #E6EEF8;
   position: absolute;
   top: 50%; left: 50%;
   transform: translate(-50%, -50%);
 }
+
 .dial-value {
-  margin-top: 6px;
-  font-size: 1rem;
+  margin-top: 4px;
+  font-size: clamp(12px, 2vh, 16px);
+  color: #9FB3C8;
+}
+
+.sliders {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 90%;
+}
+
+.slider-control {
+  text-align: center;
+}
+
+.slider-label {
+  font-size: clamp(12px, 2vh, 18px);
+  margin-bottom: 4px;
+}
+
+.slider-control input[type=range] {
+  width: 100%;
+  accent-color: #E6EEF8;
+}
+
+.slider-value {
+  font-size: clamp(10px, 2vh, 14px);
   color: #9FB3C8;
 }
 
 .arm-buttons {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 8px;
+  gap: 6px;
+  margin-top: 10px;
+  width: 100%;
 }
+
 .medium-btn {
-  padding: 12px;
-  border-radius: 50px;
+  padding: clamp(8px, 1vh, 12px);
+  border-radius: 20px;
   border: 2px solid #000;
   background: #E6EEF8;
   font-weight: bold;
   color: #0D1B2A;
-  font-size: 20px;
+  font-size: clamp(12px, 2vh, 16px);
 }
 
 .status-bar {
-  padding: 8px 12px;
+  flex: 0 0 auto;
+  padding: 6px 12px;
   border-top: 1px solid #222;
-  font-size: 0.9rem;
+  font-size: clamp(10px, 2vh, 14px);
+  text-align: center;
 }
 
-/* Press feedback */
 button:active {
   transform: scale(0.97);
 }
 
-/* Landscape only */
+/* Portrait mode lock */
 @media (orientation: portrait) {
   #app { display: none; }
   .overlay { display: flex; }
