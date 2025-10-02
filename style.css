@@ -5,166 +5,137 @@ body {
   user-select: none;
   font-family: "Poppins", sans-serif;
   height: 100vh;
-  overflow: hidden; /* no scroll ever */
+  width: 100vw;
+  overflow: hidden; /* force no scroll */
   display: flex;
   flex-direction: column;
 }
 
-#app {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
+/* Top bar */
 .topbar {
+  height: 10vh;
   display: flex;
   justify-content: space-between;
-  padding: 5px 10px;
-  font-weight: bold;
-  height: 10%;
   align-items: center;
+  padding: 0 2vw;
 }
-
 .topbar .logo {
-  font-size: clamp(16px, 2.5vw, 28px);
+  font-size: 3vh;
   font-family: "Zen Dots", sans-serif;
 }
-
 .indicators {
   display: flex;
-  gap: 6px;
-  align-items: center;
+  gap: 1vw;
 }
-
 .indicator {
-  font-size: clamp(10px, 2vw, 12px);
-  font-weight: 500;
+  font-size: 1.5vh;
+  text-align: center;
 }
 .indicator .light {
-  width: 12px;
-  height: 12px;
+  width: 1.5vh;
+  height: 1.5vh;
   border-radius: 50%;
   background: red;
   margin: 0 auto 2px;
 }
 
-/* Main controls section */
+/* Controls split in 2 panels */
 .controls {
   flex: 1;
-  display: flex;
-  gap: 6px;
-  padding: 6px;
-  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1vw;
+  padding: 1vh;
+  height: 80vh;
+  box-sizing: border-box;
 }
 
+/* Panels */
 .panel {
-  flex: 1;
   background: #0F2A44;
-  border-radius: 15px;
-  padding: 6px;
+  border-radius: 2vh;
+  padding: 1vh;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  min-width: 0;
 }
 
-/* Movement grid buttons */
+/* Movement buttons */
 .movement-grid {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 4px;
+  gap: 1vh;
 }
-
 .mid-row {
   display: flex;
-  gap: 4px;
+  gap: 1vh;
 }
-
 .big-btn {
-  width: clamp(45px, 7vh, 65px);
-  height: clamp(45px, 7vh, 65px);
+  width: 10vh;
+  height: 10vh;
   border-radius: 50%;
   background: #fff;
   border: 2px solid #333;
-  font-size: clamp(14px, 2vh, 18px);
+  font-size: 3vh;
   font-weight: bold;
 }
-
-/* Power button */
 #btn-power {
-  font-size: clamp(12px, 2vh, 16px);
-  border-radius: 15px;
-  padding: 6px 12px;
+  padding: 1vh 2vh;
+  font-size: 2vh;
+  border-radius: 2vh;
 }
 #btn-power:active { background: greenyellow; }
 
-/* Joystick & Dial */
-.joystick-card {
-  text-align: center;
-}
+/* Arm dial + controls */
 .joystick-label {
-  font-size: clamp(12px, 2vh, 16px);
-  margin-bottom: 4px;
+  font-size: 2vh;
 }
-
 .dial {
-  width: clamp(80px, 15vh, 110px);
-  height: clamp(80px, 15vh, 110px);
+  width: 15vh;
+  height: 15vh;
   border-radius: 50%;
   background: #07243a;
-  margin: 0 auto;
   position: relative;
 }
-
 .dial-knob {
-  width: clamp(18px, 3vh, 25px);
-  height: clamp(18px, 3vh, 25px);
+  width: 3vh;
+  height: 3vh;
   border-radius: 50%;
   background: #E6EEF8;
   position: absolute;
   top: 50%; left: 50%;
   transform: translate(-50%, -50%);
 }
-
 .dial-value {
-  margin-top: 4px;
-  font-size: clamp(10px, 2vh, 14px);
+  font-size: 1.5vh;
   color: #9FB3C8;
+  margin-top: 0.5vh;
 }
 
 /* Sliders */
 .sliders {
+  width: 90%;
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  width: 95%;
+  gap: 1vh;
 }
+.slider-label { font-size: 1.5vh; }
+.slider-control input[type=range] { width: 100%; }
+.slider-value { font-size: 1.2vh; color: #9FB3C8; }
 
-.slider-label {
-  font-size: clamp(10px, 2vh, 14px);
-}
-.slider-control input[type=range] {
-  width: 100%;
-  accent-color: #E6EEF8;
-}
-.slider-value {
-  font-size: clamp(10px, 1.5vh, 12px);
-  color: #9FB3C8;
-}
-
-/* Arm buttons grid */
+/* Arm buttons */
 .arm-buttons {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 6px;
+  grid-template-columns: 1fr 1fr;
+  gap: 1vh;
   width: 100%;
 }
 .medium-btn {
-  padding: clamp(6px, 1vh, 10px);
-  border-radius: 15px;
-  font-size: clamp(12px, 2vh, 14px);
+  padding: 1vh;
+  border-radius: 2vh;
+  font-size: 1.5vh;
   font-weight: bold;
   background: #E6EEF8;
   color: #0D1B2A;
@@ -173,11 +144,12 @@ body {
 
 /* Status bar */
 .status-bar {
-  flex: 0 0 auto;
-  padding: 4px;
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5vh;
   border-top: 1px solid #222;
-  font-size: clamp(10px, 1.5vh, 12px);
-  text-align: center;
 }
 
 /* Portrait lock */
